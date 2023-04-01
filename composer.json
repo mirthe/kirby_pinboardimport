@@ -1,0 +1,21 @@
+{
+    "name": "mirthe/pinboard-import",
+    "version": "1.0",
+    "description": "Imports weekly links from Pinboard to a linklist",
+    "keywords": ["kirby-plugin", "pinboard", "import", "links"],
+    "type": "kirby-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mirthe Valentijn",
+            "email": "me@Mirthe.org",
+            "homepage": "https://mirthe.org"
+        }
+    ],
+    "funding": [
+        {
+            "type": "paypal",
+            "url": "https://paypal.me/MirtheValentijn"
+        }
+    ]
+}
