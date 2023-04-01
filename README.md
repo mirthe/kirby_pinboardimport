@@ -1,6 +1,6 @@
 # Kirby Plugin: Pinboard import
 
-Imports weekly links from Pinboard to a linklist in the form of Kirby pages.
+Imports weekly links from [Pinboard](https://pinboard.in) to a linklist in the form of Kirby pages.
 
 ## Git submodule
 
