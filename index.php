@@ -13,7 +13,7 @@ if (($user = $kirby->user()) && $user->role()->id() === 'admin') {
             'action'  => function () {
 
                 $enddate = strtotime(date('Y-m-d'));
-                $startdate = strtotime( '-6 months', $enddate );
+                $startdate = strtotime('-6 months', $enddate);
                 $loopdate = $startdate;
                 
                 $mijnoutput = '<p>Get links for the week ending on:</p>';
@@ -24,7 +24,7 @@ if (($user = $kirby->user()) && $user->role()->id() === 'admin') {
                     $showdate = date("Y-m-d", strtotime('-1 day', $loopdate));
                 
                     $day = date('w', $loopdate);
-                    if ($day == 1){ // alleen op maandag uitvoeren voor de voorgaande week..
+                    if ($day == 1) { // alleen op maandag uitvoeren voor de voorgaande week..
                         $mijnoutput .= '<a href="import?einddatum='.$einddatum.'">'. $showdate . "</a><br>";
                     }
                 }
