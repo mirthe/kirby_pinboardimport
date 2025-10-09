@@ -16,8 +16,7 @@ There are 2 routines available, one to import last weeks post and a second one t
 
 Add the following to your Kirby config where XX is your Pinboard API token (get this at https://pinboard.in/settings/password) and YYY your domain or sitename for identification:
     
-    'pinboard.token' => 'XXX',
-    'pinboard.useragent' => 'YYY',
+    'pinboard.token' => 'XXX'
 
 I have this scheduled for early monday morning, but you can run this manually on monday in case you made changes in Pinboard and want to update the linklist. An existing folder for the week will be overwritten.
 

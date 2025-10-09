@@ -4,8 +4,7 @@ if (($user = $kirby->user()) && $user->role()->id() === 'admin') {
 
     Kirby::plugin('mirthe/pinboard-import', [
         'options' => [
-            'token' => option('pinboard.token'),
-            'useragent' => option('pinboard.useragent')
+            'token' => option('pinboard.token')
         ],
         'routes' => [
             [
