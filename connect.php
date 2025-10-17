@@ -12,7 +12,7 @@ $url = "http://api.pinboard.in/v1/posts/all?auth_token=".option('mirthe.pinboard
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);					// this is the page we're grabbing
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);			// we want the data passed back
-curl_setopt($ch, CURLOPT_USERAGENT, $site->title());	
+curl_setopt($ch, CURLOPT_USERAGENT, kirby()->site()->title());	
 
 $page = curl_exec($ch);
 $HTTPCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
