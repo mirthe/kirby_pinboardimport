@@ -1,6 +1,6 @@
 {
     "name": "mirthe/kirby_pinboardimport",
-    "version": "1.0",
+    "version": "1.1",
     "description": "Imports weekly links from Pinboard to a linklist",
     "homepage": "https://github.com/mirthe/kirby_pinboardimport",
     "keywords": ["kirby-plugin", "pinboard", "import", "links"],
