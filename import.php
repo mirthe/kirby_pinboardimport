@@ -13,7 +13,8 @@ foreach($xmlObj as $item)
 $linklist .= "</dl>". PHP_EOL;
 
 $jaar = date ("o", strtotime($pubdatum));
-$folder = str_replace('-', '', $pubdatum);
+// $folder = str_replace('-', '', $pubdatum);
+$folder = date ("W", strtotime($pubdatum));
 
 if (!is_dir($exportdir . $jaar)) {
     // folder for jaar doesn't exist, make it
@@ -27,7 +28,7 @@ if (!is_dir($exportdir . $jaar .'/'. $folder)) {
 }
 
 // Compile the content of the file to write
-$strtowrite = "Title: " . date ("o", strtotime($pubdatum)) ." w" . date ("W", strtotime($pubdatum))
+$strtowrite = "Title: Linklist " . date ("o", strtotime($pubdatum)) ." w" . date ("W", strtotime($pubdatum))
 . PHP_EOL . "----" . PHP_EOL
 . "Date: " . $pubdatum
 . PHP_EOL . "----" . PHP_EOL
@@ -44,7 +45,7 @@ $page = Page::create([
     'template' => 'linklist_week',
     'isDraft' => false,
     'content' => [
-      'title'  => date ("o", strtotime($pubdatum)) ." w" . date ("W", strtotime($pubdatum)),
+      'title'  => 'Linklist ' . date ("o", strtotime($pubdatum)) ." w" . date ("W", strtotime($pubdatum)),
       'date' => $pubdatum,  // TODO timezone corrigeren
       'text' => linklist
     ]
