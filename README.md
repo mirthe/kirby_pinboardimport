@@ -10,7 +10,7 @@ git submodule add https://github.com/mirthe/kirby_pinboardimport site/plugins/pi
 
 ## Usage
 
-There are 2 routines available, one to import last weeks post and a second one to pick a specific week and import the links for that week. To run either routine, you need to be logged into the panel as an admin user to protect your site from some abuse.
+There are 2 routines available, one to import last weeks post and a second one to pick a specific week and import the links for that week. The calendar requires an admin session. The import can also be called by a cronjob using a secret request header.
 
 ### Get last weeks links
 
@@ -21,6 +21,18 @@ Add the following to your Kirby config where XX is your Pinboard API token (get 
 I have this scheduled for early monday morning, but you can run this manually on monday in case you made changes in Pinboard and want to update the linklist. An existing folder for the week will be overwritten.
 
     https://yoursite.com/pinboard/import
+
+### Run from a cronjob
+
+Set a separate, long random secret in your Kirby config. Do not reuse the Pinboard API token:
+
+    'mirthe.pinboard-import.cron-token' => 'your-long-random-secret'
+
+Then configure your host's cronjob to send that secret in the `X-Cron-Token` header. For example, generate a secret with `openssl rand -hex 32` and use:
+
+    curl --fail --silent --show-error --location --header 'X-Cron-Token: your-long-random-secret' https://yoursite.com/pinboard/import >/dev/null 2>&1
+
+Schedule this for Monday, because the import only runs for Mondays. The admin session remains available for manual imports.
 
 ### Choose a specific week
 

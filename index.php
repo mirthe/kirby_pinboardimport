@@ -1,7 +1,8 @@
 <?php
 Kirby::plugin('mirthe/pinboard-import', [
     'options' => [
-        'token' => option('pinboard.token')
+        'token' => option('pinboard.token'),
+        'cron-token' => option('pinboard.cron-token')
     ],
     'routes' => [
         [
@@ -34,7 +35,16 @@ Kirby::plugin('mirthe/pinboard-import', [
             'pattern' => 'pinboard/import',
             'action'  => function () {
                 $kirby = kirby();
-                if (($user = $kirby->user()) && $user->role()->id() === 'admin') {
+                $user = $kirby->user();
+                $isAdmin = $user && $user->role()->id() === 'admin';
+                $cronToken = option('mirthe.pinboard-import.cron-token');
+                $providedToken = $_SERVER['HTTP_X_CRON_TOKEN'] ?? '';
+                $isCron = is_string($cronToken)
+                    && $cronToken !== ''
+                    && is_string($providedToken)
+                    && hash_equals($cronToken, $providedToken);
+
+                if ($isAdmin || $isCron) {
                     if (isset($_GET["einddatum"])) {
                         $einddatum = htmlspecialchars($_GET["einddatum"]);
                     } else {
