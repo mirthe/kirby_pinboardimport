@@ -26,7 +26,7 @@ I have this scheduled for early monday morning, but you can run this manually on
 
 Set a separate, long random secret in your Kirby config. Do not reuse the Pinboard API token:
 
-    'mirthe.pinboard-import.cron-token' => 'your-long-random-secret'
+    'pinboard.cron-token' => 'your-long-random-secret'
 
 Then configure your host's cronjob to send that secret in the `X-Cron-Token` header. For example, generate a secret with `openssl rand -hex 32` and use:
 
